@@ -65,12 +65,14 @@ if __name__ == "__main__":
         print("Invalid dictionary!!! No words of the required length!!!")
         sys.exit()
 
+    with open("cactus.cow") as f:
+        cactus_cow = cowsay.read_dot_cow(f)
 
     def ask(prompt: str, valid: list[str] = None) -> str:
-        print(cowsay.cowsay(prompt, cow=cowsay.get_random_cow()))
+        print(cowsay.cowsay(prompt, cowfile=cactus_cow))
         ans = input()
         while valid and ans not in valid:
-            print(cowsay.cowsay(prompt, cow=cowsay.get_random_cow()))
+            print(cowsay.cowsay(prompt, cowfile=cactus_cow))
             ans = input()
         return ans
 
